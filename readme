@@ -1,1 +1,35 @@
-test
+#  Abuser Tool
+
+** Abuser** is a high-speed automation tool designed for sending a large number of messages (or "abuses") in chat applications or platforms. This tool demonstrates how automation can interact with chat systems. While it operates similarly to a Denial-of-Service (DoS) attack in chat applications, it is **strictly intended for educational and ethical use**.
+
+## ⚠️ Disclaimer
+
+This tool is designed **ONLY for testing and educational purposes**. Misusing it to spam or disrupt others' communication is **illegal and unethical**. By using this tool, you agree to use it responsibly and take full responsibility for any actions you perform with it. The author does not condone or take any responsibility for misuse.
+
+## Features
+
+- **High-Speed Messaging:** Sends messages at an exceptionally fast rate.
+- **Customizable Inputs:** Allows the user to specify custom messages or "abuses."
+- **Dynamic Automation:** Compatible with multiple platforms (with proper configuration).
+- **Easy-to-Use Interface:** Simple GUI for quick setup and operation.
+- **JSON Data Storage:** Saves messages and configurations for reuse.
+
+## Use Cases
+
+- **Stress Testing:** Test chat applications or platforms for message rate handling and anti-spam mechanisms.
+- **Learning Automation:** Understand how high-speed message automation works.
+- **Ethical Hacking:** Explore ethical penetration testing on authorized systems.
+
+# Download Abuser Tool
+
+**Abuser** is a high-speed automation tool designed for sending messages ("abuses") rapidly in chat platforms. Use it responsibly and only for educational or ethical purposes.
+
+## Download
+
+Click the link below to download the latest version of the tool:
+
+👉 [**Download  Abuser Tool**](https://github.com/yourusername/-abuser-tool/releases/latest)
+
+## Note
+
+This tool is for **educational and ethical purposes only**. Misuse is strictly prohibited. Always ensure you have permission before testing on any platform.
