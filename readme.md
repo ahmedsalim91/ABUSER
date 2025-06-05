@@ -1,62 +1,98 @@
-#  Abuser Tool
+ABUSER v5
+ABUSER v5 is a Python-based automation tool designed to send messages to Android devices via ADB (Android Debug Bridge). It features a GUI for managing names, messages ("galis"), and settings, and supports CLI mode for integration with other tools, such as Discord bots. The tool is intended for private testing and ethical use only.
+Features
 
-** Abuser** is a high-speed automation tool designed for sending a large number of messages (or "abuses") in chat applications or platforms. This tool demonstrates how automation can interact with chat systems. While it operates similarly to a Denial-of-Service (DoS) attack in chat applications, it is **strictly intended for educational and ethical use**.
+GUI Interface: Manage names, messages, and settings via a Tkinter-based interface.
+Message Automation: Send formatted messages (40 dots + name + message) to multiple Android devices.
+ADB Integration: Supports multiple devices with configurable tap coordinates and delays.
+Randomization: Optionally randomize messages from a JSON file.
+Logging: Detailed logs saved to logs/abuser.log.
+CLI Mode: Run via command-line for bot integration (e.g., with [AMD PRO MAX]).
 
-## ⚠️ Disclaimer
+Requirements
 
-This tool is designed **ONLY for testing and educational purposes**. Misusing it to spam or disrupt others' communication is **illegal and unethical**. By using this tool, you agree to use it responsibly and take full responsibility for any actions you perform with it. The author does not condone or take any responsibility for misuse.
-
-## Features
-
-- **High-Speed Messaging:** Sends messages at an exceptionally fast rate.
-- **Customizable Inputs:** Allows the user to specify custom messages or "abuses."
-- **Dynamic Automation:** Compatible with multiple platforms (with proper configuration).
-- **Easy-to-Use Interface:** Simple GUI for quick setup and operation.
-- **JSON Data Storage:** Saves messages and configurations for reuse.
-
-## Use Cases
-
-- **Stress Testing:** Test chat applications or platforms for message rate handling and anti-spam mechanisms.
-- **Learning Automation:** Understand how high-speed message automation works.
-- **Ethical Hacking:** Explore ethical penetration testing on authorized systems.
-
-# Download Abuser Tool
-
-**Abuser** is a high-speed automation tool designed for sending messages ("abuses") rapidly in chat platforms. Use it responsibly and only for educational or ethical purposes.
-
-## Download
-
-Click the link below to download the latest version of the tool:
-
-👉 [**Download  Abuser Tool**](look below:)
-Abuser v4:-
-  G-Drive : https://drive.google.com/file/d/1Fh6ZxM-0WJYtgAf7IiJBPaHrRm1jxYA1/view?usp=sharing
-  alternative : https://www.mediafire.com/file/7gudq62m6j2pttc/ABUSER+v4.zip/file
-
-Assigner:-
-  Name Tool : https://github.com/ahmedsalim91/ABUSER/releases/download/v4.0/assigner4all.exe
-
-platform-tools:-
-  ADB : https://dl.google.com/android/repository/platform-tools-latest-windows.zip
-
-required data files:-
-  Abuse dictionary : https://github.com/user-attachments/files/18332897/galis.json
+Python 3.8+
+ADB (Android Debug Bridge) installed and configured
+Python packages:pip install pyperclip
 
 
-# Usage of Abuser Tool
-  1.) Run the Assigner.exe for adding the Names of target peoples.
-  2.) Run the Abuser.exe
-  3.) Write the IP and PORT of the adb device and hit Start button
-  4.) Run the Distribution for another device
-  5.) run another distribution.exe for more devices as much as you need...
-# Installation of Abuser Tool
-  1.) Download all the files from above.
-  2.) Create a folder with name "abuser" on Desktop
-  3.) Paste the "Abuser dictionary" the galis.json file in Desktop/abuser folder
-  4.) Download ADB in your computer
-  5.) Connect your Emulator / device with the ADB after enabling the USB Debugging or Wireless Debugging
-      #you can watch tutorials to connect your device with ADB
-  6.) Note down the ADB's IP AND PORT and use it to run tool.
+Android device(s) or emulator(s) with USB debugging enabled
 
-## Note
-This tool is for **educational, entertainment and ethical purposes only**. Misuse is strictly prohibited. Always ensure you have permission before testing on any platform.
+Installation
+
+Clone the repository:git clone https://github.com/ahmedsalim91/ABUSER.git
+cd ABUSER
+
+
+Install dependencies:pip install pyperclip
+
+
+Ensure ADB is installed and devices are connected:adb devices
+
+
+Place galis.json and config.json in ~/Desktop/abuser/ (see samples below).
+
+Usage
+GUI Mode
+Run the tool:
+python abuser.py
+
+
+Names Tab: Enter names, choose distribution (even or alternate), and generate temp.json.
+Messages Tab: Auto-detect devices, preview messages, and start/stop sending.
+Galis Tab: Add, edit, or delete messages (galis.json).
+Settings Tab: Configure delays, tap coordinates, and randomization.
+
+CLI Mode
+For bot integration (e.g., [AMD PRO MAX]):
+python abuser.py --devices 127.0.0.1:5555 --names Alice,Bob
+
+
+--devices: Comma-separated ADB device IDs.
+--names: Comma-separated names for message generation.
+
+Configuration
+config.json
+Sample configuration (~/Desktop/abuser/config.json):
+{
+    "devices": ["127.0.0.1:5555"],
+    "delay": 1.0,
+    "paste_delay": 0.3,
+    "randomize": false,
+    "theme": "dark",
+    "tap_coords": {"x1": 1119, "y1": 654, "x2": 1197, "y2": 670}
+}
+
+
+paste_delay: Delay after pasting messages (adjust if messages send too fast).
+tap_coords: Screen coordinates for input field and send button (adjust for your app).
+
+galis.json
+Sample messages (~/Desktop/abuser/galis.json):
+{
+    "0": "BAAP AAGYA VAPAS !! DADDY!",
+    "1": "Test message"
+}
+
+File Structure
+ABUSER/
+├── abuser.py       # Main script
+├── README.md       # Documentation
+├── .gitignore      # Git ignore file
+├── config.json     # Configuration
+├── galis.json          # Messages
+├── temp.json       # Generated names (auto-created)
+├── logs/           # Log files
+│   └── abuser.log
+
+Notes
+
+Ethical Use: Use only for private testing or with explicit permission. Misuse may violate platform policies or terms of service.
+Logs: Check logs/abuser.log for debugging.
+Integration: Compatible with Discord bots via CLI mode (e.g., /runtool abuser2/abuser2.py --devices ...).
+Support: For issues, open a GitHub issue or contact the repo owner.
+
+License
+MIT License (see LICENSE file, to be added).
+
+Developed by Ahmed Salim
