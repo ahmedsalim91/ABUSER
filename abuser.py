@@ -102,11 +102,31 @@ def get_adb_devices():
     try:
         result = subprocess.run(['adb', 'devices'], capture_output=True, text=True)
         devices = [line.split('\t')[0] for line in result.stdout.splitlines()[1:] if '\tdevice' in line]
-        return devices
+        
+        # Filter out potential duplicates (e.g., emulator-5554 and 127.0.0.1:5555)
+        filtered_devices = []
+        emulator_devices = [d for d in devices if d.startswith('emulator-')]
+        ip_devices = [d for d in devices if ':' in d]  # IP-based devices like 127.0.0.1:5555
+        
+        # If both emulator and IP-based devices are present, prefer IP-based
+        if ip_devices and emulator_devices:
+            filtered_devices.extend(ip_devices)  # Keep IP-based devices
+            # Optionally, verify if emulator device is the same as IP-based
+            for emulator in emulator_devices:
+                # You can add more checks here (e.g., compare serial numbers)
+                # For simplicity, skip emulator devices if IP-based exists
+                logging.info(f"Skipping emulator device {emulator} as IP-based device exists")
+        else:
+            filtered_devices.extend(devices)  # No duplicates, keep all devices
+        
+        # Remove duplicates while preserving order
+        seen = set()
+        filtered_devices = [d for d in filtered_devices if not (d in seen or seen.add(d))]
+        
+        return filtered_devices
     except Exception as e:
         logging.error(f"Error getting ADB devices: {e}")
         return []
-
 # Main App
 class AbuserApp:
     def __init__(self, root):
@@ -444,6 +464,7 @@ def run_cli(args):
             galis_key = f"{idx-1}th"
             galis = random.choice(list(galis.values())) if config['randomize'] else galis.get(galis_key, "No galis")
             message = f"{'.' * 40}\n{name} {galis}"
+            logging.info(f"Message to copy: {repr(message)}")  # Debug: Log the exact message
             pyperclip.copy(message)
             
             # Step 1: Tap input field
